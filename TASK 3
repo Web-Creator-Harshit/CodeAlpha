@@ -1,0 +1,59 @@
+import java.awt.event.*;
+import javax.swing.*;  
+public class Booking extends JFrame implements ActionListener{  
+    JLabel l;  
+    JCheckBox cb1,cb2,cb3;  
+    JButton b;  
+    Booking()
+    {  
+        l=new JLabel("Booking Travel System");  
+        l.setBounds(100,50,300,20);  
+        cb1=new JCheckBox("Flight Tickets @ 10000");  
+        cb1.setBounds(100,100,180,20);  
+        cb2=new JCheckBox("Hotel @ 30000");  
+
+        cb2.setBounds(100,150,150,20);  
+        cb3=new JCheckBox("Cab @ 5000");  
+        cb3.setBounds(100,200,150,20);  
+        b=new JButton("Confirm Booking");  
+        b.setBounds(100,250,180,30);  
+        b.addActionListener(this);  
+        add(l);add(cb1);add(cb2);add(cb3);add(b);  
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+        setDefaultCloseOperation(EXIT_ON_CLOSE);  
+    }  
+    public void actionPerformed(ActionEvent e)
+    {  
+        float amount=0;  
+        String msg=""; 
+        if(!cb1.isSelected() && !cb2.isSelected() && !cb3.isSelected())
+        {
+            JOptionPane.showMessageDialog(this,msg+"Please Select the Following Options to Confirm your Booking");
+        }
+        else
+        { 
+        if(cb1.isSelected())
+        {  
+            amount+=10000;  
+            msg="Flight Tickets: 10000\n";  
+        }  
+        if(cb2.isSelected())
+        {  
+            amount+=30000;  
+            msg+="Hotel: 30000\n";  
+        }  
+        if(cb3.isSelected()){  
+            amount+=5000;  
+            msg+="Cab: 5000\n";  
+        }  
+        msg+="-----------------\n";  
+        JOptionPane.showMessageDialog(this,msg+"Your Booking has confirmed\n \n Total: \t"+amount);  
+    }
+    }  
+    public static void main(String[] args) 
+    {  
+        new Booking();  
+    }  
+}  
